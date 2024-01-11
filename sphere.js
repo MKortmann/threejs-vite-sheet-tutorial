@@ -86,6 +86,7 @@ loop()
 // Timeline animation
 const tl = gsap.timeline({ defaults: { duration: 1.5} })
 tl.fromTo(sphereMesh.scale, {x: 0, y: 0, z: 0}, {x:1, y: 1, z:1});
+tl.fromTo("nav", { y: "-100%"}, { y: "0%", duration: 1}, "-=1.5")
 
 
 }
