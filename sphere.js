@@ -1,6 +1,7 @@
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { TextureLoader } from 'three';
 import gsap from 'gsap';
 
 export default function() {
@@ -12,9 +13,14 @@ const scene = new THREE.Scene();
 // Create the sphere
 const geometry = new THREE.SphereGeometry(6, 64, 64);
 
+// Create the texture loader
+const textureLoader = new TextureLoader();
+
+const moonTexture = textureLoader.load('moon.jpg');
+
 const material = new THREE.MeshStandardMaterial({
-  color: '#00ff83'
-})
+  map: moonTexture, // Assign the loaded texture to the map property
+});
 
 const sphereMesh = new THREE.Mesh(geometry, material);
 
