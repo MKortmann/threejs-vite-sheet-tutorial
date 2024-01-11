@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
+
+body, html {
+  overflow-y: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  /* font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff; */
+}
+
+.sphere {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.cube {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+nav {
+  color: white;
+  z-index: 2;
+  position: relative;
+  padding: 4rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav a {
+  text-decoration: none;
+  color: red;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  gap: 4rem;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
