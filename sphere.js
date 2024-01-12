@@ -11,20 +11,38 @@ const scene = new THREE.Scene();
 
 // more detailed geometry we need blender
 // Create the sphere
-const geometry = new THREE.SphereGeometry(6, 64, 64);
+const geometry = new THREE.SphereGeometry(1, 64, 64);
 
 // Create the texture loader
 const textureLoader = new TextureLoader();
 
 const moonTexture = textureLoader.load('moon.jpg');
 
-const material = new THREE.MeshStandardMaterial({
+const material = new THREE.MeshPhongMaterial({
   map: moonTexture, // Assign the loaded texture to the map property
 });
 
 const sphereMesh = new THREE.Mesh(geometry, material);
 
 scene.add(sphereMesh);
+
+// World
+
+const worldGeometry = new THREE.SphereGeometry(10, 100, 100);
+
+const worldTexture = textureLoader.load('world.jpg')
+
+const worldMaterial = new THREE.MeshBasicMaterial ( 
+  { color: 0xffffff ,
+  map: worldTexture ,
+  side: THREE.BackSide
+  }
+);
+
+const world = new THREE.Mesh( worldGeometry, worldMaterial);
+
+scene.add( world)
+
 
 const sizes = {
   width: window.innerWidth,
@@ -39,7 +57,7 @@ scene.add(light)
 
 // Camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100);
-camera.position.z = 20;
+camera.position.set(0,0,3)
 
 
 // Controls
@@ -48,7 +66,7 @@ controls.enableDamping = true;
 controls.enablePan = false;
 // controls.enableZoom = false;
 controls.autoRotate = true
-controls.autoRotateSpeed = 5
+controls.autoRotateSpeed = 1
 
 
 // Renderer
@@ -93,6 +111,4 @@ loop()
 const tl = gsap.timeline({ defaults: { duration: 1.5} })
 tl.fromTo(sphereMesh.scale, {x: 0, y: 0, z: 0}, {x:1, y: 1, z:1});
 tl.fromTo("nav", { y: "-100%"}, { y: "0%", duration: 1}, "-=1.5")
-
-
 }
