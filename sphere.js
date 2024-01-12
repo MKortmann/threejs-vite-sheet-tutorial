@@ -32,7 +32,7 @@ const worldGeometry = new THREE.SphereGeometry(10, 100, 100);
 
 const worldTexture = textureLoader.load('world.jpg')
 
-const worldMaterial = new THREE.MeshBasicMaterial ( 
+const worldMaterial = new THREE.MeshBasicMaterial (
   { color: 0xffffff ,
   map: worldTexture ,
   side: THREE.BackSide
