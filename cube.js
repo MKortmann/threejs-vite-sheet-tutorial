@@ -10,7 +10,7 @@ import SpriteText from 'three-spritetext';
 // CSS2DRenderer is a simplified version of CSS3DRenderer. The only transformation that is supported is translation.
 // import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 
-export default function() {
+export function cubeScript() {
 // Create a new scene object. - Scenes allow you to set up what and where is to be rendered by three.js. (TO PUT EVERYTHING ON IT)
 const scene = new THREE.Scene();
 

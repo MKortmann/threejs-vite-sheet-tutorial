@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { TextureLoader } from 'three';
 import gsap from 'gsap';
 
-export default function() {
+export function sphereScript() {
 
 // Create the scene
 const scene = new THREE.Scene();
@@ -50,13 +50,13 @@ const sizes = {
 }
 
 // Light
-const light = new THREE.PointLight('#ffffff', 70, 100);
-light.position.set(10,10, 10);
+const light = new THREE.PointLight('#ffffff', 300, 1000);
+light.position.set(0,0,10);
 scene.add(light)
 
 
 // Camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100);
+const camera = new THREE.PerspectiveCamera(65, sizes.width / sizes.height, 0.1 , 100);
 camera.position.set(0,0,3)
 
 
@@ -78,28 +78,35 @@ const webGLRenderer = new THREE.WebGLRenderer({
 webGLRenderer.setPixelRatio(2);
 webGLRenderer.setSize(sizes.width, sizes.height);
 
-
-
 // Animate
 webGLRenderer.render(scene, camera);
 
-
 // Resize
-window.addEventListener('resize', () => {
+// window.addEventListener('resize', () => {
+//   // Update sizes
+//   sizes.width = window.innerWidth;
+//   sizes.height = window.innerHeight;
+
+//   // Update camera
+//   camera.aspect = sizes.width / sizes.height;
+//   camera.updateProjectionMatrix();
+  
+//   // Update renderer
+//   webGLRenderer.setSize(sizes.width, sizes.height);
+  
+// });
+
+const loop = () => {
   // Update sizes
   sizes.width = window.innerWidth;
   sizes.height = window.innerHeight;
 
-  // Update camera
   camera.aspect = sizes.width / sizes.height;
   camera.updateProjectionMatrix();
   
   // Update renderer
   webGLRenderer.setSize(sizes.width, sizes.height);
-  
-});
 
-const loop = () => {
   controls.update();
   webGLRenderer.render(scene,camera);
   window.requestAnimationFrame(loop)
@@ -108,7 +115,7 @@ const loop = () => {
 loop()
 
 // Timeline animation
-const tl = gsap.timeline({ defaults: { duration: 1.5} })
-tl.fromTo(sphereMesh.scale, {x: 0, y: 0, z: 0}, {x:1, y: 1, z:1});
-tl.fromTo("nav", { y: "-100%"}, { y: "0%", duration: 1}, "-=1.5")
+const timeLineAnimation = gsap.timeline({ defaults: { duration: 1.5} })
+timeLineAnimation.fromTo(sphereMesh.scale, {x: 0, y: 0, z: 0}, {x:1, y: 1, z:1});
+timeLineAnimation.fromTo("nav", { y: "-100%"}, { y: "0%", duration: 1}, "-=1.5");
 }
